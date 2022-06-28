@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class ArtistsController < ApplicationController
-      before_action :set_artist, only: %i[ show update destroy ]
+      before_action :set_artist, only: %i[show update destroy]
 
       # GET /artists
       def index

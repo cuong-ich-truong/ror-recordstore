@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,34 +12,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_22_065744) do
-  create_table "artists", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_artists_on_user_id"
+ActiveRecord::Schema[7.0].define(version: 20_220_622_065_744) do
+  create_table 'artists', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_artists_on_user_id'
   end
 
-  create_table "records", force: :cascade do |t|
-    t.string "title"
-    t.string "year"
-    t.integer "artist_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_records_on_artist_id"
-    t.index ["user_id"], name: "index_records_on_user_id"
+  create_table 'records', force: :cascade do |t|
+    t.string 'title'
+    t.string 'year'
+    t.integer 'artist_id', null: false
+    t.integer 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['artist_id'], name: 'index_records_on_artist_id'
+    t.index ['user_id'], name: 'index_records_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', null: false
+    t.string 'password_digest', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "artists", "users"
-  add_foreign_key "records", "artists"
-  add_foreign_key "records", "users"
+  add_foreign_key 'artists', 'users'
+  add_foreign_key 'records', 'artists'
+  add_foreign_key 'records', 'users'
 end

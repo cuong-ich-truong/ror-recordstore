@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class RecordsController < ApplicationController
-      before_action :set_record, only: %i[ show update destroy ]
+      before_action :set_record, only: %i[show update destroy]
 
       # GET /records
       def index

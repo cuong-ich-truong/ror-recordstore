@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SigninController < AplicationController
   before_action :authorize_access_request!, only: [:destroy]
 
@@ -6,7 +8,7 @@ class SigninController < AplicationController
 
     if user.authenticate(params[:password])
       payload = { user_id: user.id }
-      session = JWTSessions::Session.new(payload: payload,
+      session = JWTSessions::Session.new(payload:,
                                          refresh_by_access_allowed: true)
       tokens = session.login
 
@@ -22,7 +24,7 @@ class SigninController < AplicationController
   end
 
   def destroy
-    session = JWTSessions::Session.new(payload: payload)
+    session = JWTSessions::Session.new(payload:)
     session.flush_by_access_payload
     render json: :ok
   end
@@ -30,6 +32,6 @@ class SigninController < AplicationController
   private
 
   def not_authorized
-    render json: { error: "Cannot find email/pasword" }, status: :unauthorized
+    render json: { error: 'Cannot find email/pasword' }, status: :unauthorized
   end
 end
